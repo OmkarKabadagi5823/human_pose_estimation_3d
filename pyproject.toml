@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human_pose_estimation_3d"
+description = "3D human pose estimation from 2D poses"
+license = {file = "LICENSE"}
+keywords = ["human", "pose", "estimation", "3d"]
+authors = [
+  {email = "kabadagiomkar@gmail.com", name = "Omkar Kabadagi"},
+]
+maintainers = [
+  {email = "kabadagiomkar@gmail.com", name = "Omkar Kabadagi"},
+]
+version = "0.0.1"
+dependencies = [
+  "requests",
+  "importlib-metadata; python_version < '3.8'",
+  "numpy",
+  "scipy",
+  "opencv-python"
+]
+
+[tool.setuptools.packages]
+find = {namespaces = false}
+

@@ -1,0 +1,4 @@
+human_pose_estimation_3d_builder:
+  human_detection_model: ssdlite_static 
+  human_pose_detection_2d_model: hrnet_w48_fp16_dynamic
+  camera_parameters: camera_parameters.json
