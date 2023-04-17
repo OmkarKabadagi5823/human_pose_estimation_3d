@@ -58,6 +58,20 @@ python walk_session_1_example.py
 --camera_params ../config/camera_parameters.json
 --device_name cuda
 ```
+
+## Using Docker Image
+The docker image requires nvidida-container-runtime to be installed on the host machine. Please refer to the [official repository](https://github.com/NVIDIA/nvidia-container-runtime#installation) for installation instructions.
+
+### Build docker image
+```bash
+docker build -t cobot/hpe3d:latest -f docker/Dockerfile .
+```
+
+### Run the docker container
+```bash
+bash docker/docker_deploy.sh
+```
+
 ## Output format
 The output of the model is a `15 x 3` ndarray which represents the `x`, `y` and `z` position coordinates of the `15` joints. The joints are ordered as follows:
 -  0: hip (hip centre)
