@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from mmdeploy_python import PoseDetector
+from mmdeploy_runtime import PoseDetector
 from hpe3d.logger import Logger
 
 from typing import List

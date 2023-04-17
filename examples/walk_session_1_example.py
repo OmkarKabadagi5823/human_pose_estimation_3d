@@ -1,7 +1,7 @@
 from hpe3d.model import HumanPoseDetector3DBuilder
 from hpe3d.utils import dataset_utils
 from hpe3d.logger import Logger
-from hpe3d.visualizer import RvizVisualizer
+
 
 import cv2
 import numpy as np
@@ -31,6 +31,7 @@ def main(args):
     # human_pose_detector_3d.set_triangulator_logging_level(logging.DEBUG)
 
     if args.visualize:
+        from hpe3d.visualizer import RvizVisualizer
         visualizer = RvizVisualizer('/human_markers')
     
     s = time.time()

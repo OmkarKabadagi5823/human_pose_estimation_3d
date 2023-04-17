@@ -1,6 +1,6 @@
 import cv2
 import numpy as np
-from mmdeploy_python import Detector
+from mmdeploy_runtime import Detector
 from hpe3d.logger import Logger
 
 from typing import List, Tuple
