@@ -36,26 +36,26 @@ pose = human_pose_detector_3d.eval(view1, view2, view3)
 For further details, please refer the inline documentation.
 
 ### Run the example
-Before running the example, you need to download and convert the models into TensorRT models using the [model converter tool](https://mmdeploy.readthedocs.io/en/stable/02-how-to-run/convert_model.html) from mmdeploy. Choose one model each from MMDetection and MMPose from the [supported model list](https://mmdeploy.readthedocs.io/en/stable/03-benchmark/supported_models.html). You can also convert custom models by writing your own custom conversion configurations. In our case, we use SSDLite and HRNet model. Place the converted models under `{hpe3d_root_dir}/data/mmdeploy_models`. You will also need the dataset to run the model. We will provide the link for the model soon.
+Before running the example, you need to download and convert the models into TensorRT models using the [model converter tool](https://mmdeploy.readthedocs.io/en/stable/02-how-to-run/convert_model.html) from mmdeploy. Choose one model each from MMDetection and MMPose from the [supported model list](https://mmdeploy.readthedocs.io/en/stable/03-benchmark/supported_models.html). You can also convert custom models by writing your own custom conversion configurations. In our case, we use SSDLite and MobileNetV2 model respectively. Place the converted models under `{hpe3d_root_dir}/data/mmdeploy_models`. You will also need the dataset to run the model.
 
 usage:
 ```bash
 cd examples
-python walk_session_1_example.py 
---human_detection_model <path/to/human/detection/model>
---human_pose_detection_2d_model <path/to/human/pose/detection/2d/model>
---camera_params <path/to/camera/parameters>
---device_name cuda
+python walk_session_1_example.py \
+--human_detection_model <path/to/human/detection/model> \
+--human_pose_detection_2d_model <path/to/human/pose/detection/2d/model> \
+--camera_params <path/to/camera/parameters> \
+--device_name cuda \
 --visualize # optional (Requires ROS and Rviz)
 ```
 
 example:
 ```bash
 cd examples
-python walk_session_1_example.py
---human_detection_model ../data/mmdeploy_models/ssdlite_static
---human_pose_detection_2d_model ../data/mmdeploy_models/hrnet_w48_fp16_dynamic
---camera_params ../config/camera_parameters.json
+python walk_session_1_example.py \
+--human_detection_model ../data/mmdeploy_models/mobilenetv2_det-fp16-static \
+--human_pose_detection_2d_model ../data/mmdeploy_models/mobilenetv2_pose-fp16-static \
+--camera_params ../config/camera_parameters.json \
 --device_name cuda
 ```
 

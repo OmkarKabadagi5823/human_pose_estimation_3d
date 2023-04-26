@@ -4,4 +4,4 @@ docker run  --gpus 'all,"capabilities=compute,utility,graphics"' \
   -v ./data:/root/workspace/human_pose_estimation_3d/data \
   -it \
   --name cobot_deploy \
-  cobot/deploy:latest 
+  cobot/hpe3d:latest 
