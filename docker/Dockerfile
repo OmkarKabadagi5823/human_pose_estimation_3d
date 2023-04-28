@@ -103,11 +103,21 @@ RUN cd /root/workspace/mmdeploy &&\
     export SPDLOG_LEVEL=warn &&\
     if [ -z ${VERSION} ] ; then echo "Built MMDeploy for GPU devices successfully!" ; else echo "Built MMDeploy version v${VERSION} for GPU devices successfully!" ; fi
 
+### install mmdetection and mmpose
 RUN git clone -b 3.x https://github.com/open-mmlab/mmdetection.git && \
     git clone -b 1.x https://github.com/open-mmlab/mmpose.git && \
     mim install -v -e mmdetection/ && \
     mim install -v -e mmpose/
 
+### ros installation
+RUN echo "deb http://packages.ros.org/ros/ubuntu focal main" > /etc/apt/sources.list.d/ros1-latest.list && \
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt-get update && apt-get install -y --no-install-recommends ros-noetic-perception=1.5.0-1* ros-noetic-rviz* && \
+    rm -rf /var/lib/apt/lists/* && \
+    pip install rospkg
+
+### download the model checkpoints
 RUN wget https://download.openmmlab.com/mmdetection/v2.0/ssd/ssdlite_mobilenetv2_scratch_600e_coco/ssdlite_mobilenetv2_scratch_600e_coco_20210629_110627-974d9307.pth -P checkpoints && \
     wget https://download.openmmlab.com/mmpose/v1/body_2d_keypoint/topdown_heatmap/coco/td-hm_mobilenetv2_8xb64-210e_coco-256x192-55a04c35_20221016.pth -P checkpoints
 
@@ -117,6 +127,7 @@ ENV LD_LIBRARY_PATH="/root/workspace/mmdeploy/build/lib:${BACKUP_LD_LIBRARY_PATH
 COPY docker/entrypoint.sh /root/workspace/
 COPY docker/model_convert_trt.sh /root/workspace/
 
+### install human_pose_estimation_3d
 ADD hpe3d /root/workspace/human_pose_estimation_3d/hpe3d
 ADD config /root/workspace/human_pose_estimation_3d/config
 ADD examples /root/workspace/human_pose_estimation_3d/examples
