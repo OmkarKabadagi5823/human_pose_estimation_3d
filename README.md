@@ -1,5 +1,5 @@
 ## Description
-`hpe3d` is a python package for Multiview 3D human pose estimation on the TensorRt runtime. The model is a multi-stage model that uses a [`top-down` approach](https://arxiv.org/abs/2202.02656) to build a 3D pose.
+`hpe3d` is a python package for Multiview 3D human pose estimation on the TensorRt runtime. The model is a multi-stage model that uses a [`top-down approach`](https://arxiv.org/abs/2202.02656) to build a 3D pose.
 This allows the model to be modular and configurable to use different models for different stages. It uses TensorRT models deployed using [mmdeploy](https://mmdeploy.readthedocs.io/en/stable/get_started.html).
 
 ## Goal of the Project
